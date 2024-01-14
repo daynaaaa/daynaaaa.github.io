@@ -8,6 +8,8 @@ h1 {
   font-style:normal;
   color: navy;
   margin-left: 20px;
+  text-align: center;
+  padding: 20px;
 }
 
 p {
@@ -15,6 +17,8 @@ p {
   font-weight:normal;
   font-style:normal;
   margin-left: 20px;
+  ext-align: center;
+  padding: 20px;
 }
 
 .header {
