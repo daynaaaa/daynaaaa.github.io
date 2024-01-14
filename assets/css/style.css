@@ -27,3 +27,21 @@ p {
 .header h1 {
   font-size: 40px;
 }
+
+.navbar {
+  overflow: hidden;
+  background-color: #24295c; /*dark blue*/
+}
+
+.navbar a {
+  float: left; /*links stay beside each other*/
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 20px;
+  text-decoration: none;
+}
+.navbar a:hover {
+  background-color: #2f3578; /*slightly lighter dark blue*/
+  color: #c3c4d4; /*greyish*/
+}
