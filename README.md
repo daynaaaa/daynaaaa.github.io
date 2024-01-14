@@ -1,11 +1,22 @@
-<!doctype html>
-<html lang="en-US">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>Danya Cheng</title>
-  </head>
-  <body>
-    <img src="Matching Icons ♡♡.jpeg" alt="cinamoroll">
-  </body>
-</html>
+<body>
+  <header>
+    <h1>Danya Cheng</h1>
+  </header>
+  <section>
+    <nav>
+      <ul>
+        <li><a href="#">daynaaa</a></li>
+        <li><a href="#">about me</a></li>
+        <li><a href="#">projects</a></li>
+      </ul>
+    </nav>
+    <article>
+      <h1>home</h1>
+      <p>a home page... maybe someday there will be something here... have a cinnamoroll while you're at it :p</p>
+      <img src="Matching Icons ♡♡.jpeg" alt="cinnamoroll">
+    </article>
+  </section>
+  <footer>
+    <p>fooooter</p>
+  </footer>
+</body>
