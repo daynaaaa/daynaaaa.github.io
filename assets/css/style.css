@@ -45,3 +45,9 @@ p {
   background-color: #2f3578; /*slightly lighter dark blue*/
   color: #c3c4d4; /*greyish*/
 }
+
+.footer {
+  padding: 20px;
+  text-align: center;
+  background: #7086d4;
+}
