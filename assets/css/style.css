@@ -10,10 +10,11 @@ h1 {
   margin-left: 20px;
 }
 
-p{
+p {
   font-family: 'hey_comicregular', Arial, sans-serif;
   font-weight:normal;
   font-style:normal;
+  margin-left: 20px;
 }
 
 .header {
