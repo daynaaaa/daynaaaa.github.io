@@ -1,12 +1,12 @@
 body {
-  background-color: #bbc6f0; /*light blurple*/
+  background-color: #e4d9d5; /*light blurple*/
 }
 
 h1 {
   font-family: 'milk_mangoregular', Arial, sans-serif;
   font-weight:normal;
   font-style:normal;
-  color: navy;
+  color: rgb(44, 68, 119);
   text-align: center;
   
 }
@@ -21,7 +21,7 @@ p {
 .header-wrapper {
   padding: 15px 40px;
   text-align: center;
-  background: #7086d4; /*blurple*/
+  background: rgb(105, 128, 179); 
   color: white;
 }
 
@@ -39,33 +39,33 @@ p {
 
 .navbar {
   overflow: hidden;
-  background-color: #24295c; /*dark blue*/
+  background-color: rgb(44, 68, 119);; /*dark blue*/
 }
 
 .navbar a {
   float: left; /*links stay beside each other*/
   display: block;
-  color: white;
+  color: #e0e0e9;
   text-align: center;
   padding: 14px 20px;
   text-decoration: none;
 }
 
 .navbar a:hover {
-  background-color: #2f3578; /*slightly lighter dark blue*/
-  color: #c3c4d4; /*greyish*/
+  background-color: rgb(53, 81, 141); /*slightly lighter dark blue*/
+  color: #ffffff; /*greyish*/
 }
 
 .footer {
   padding: 20px;
   text-align: center;
-  background: #7086d4;
+  background: rgb(105, 128, 179);
 }
 
 .button {
-  background-color: #2f3578;
+  background-color: rgb(44, 68, 119);;
   border: none;
-  color: white;
+  color: #e0e0e9;
   font-family: 'milk_mangoregular', Arial, sans-serif;
   font-weight:normal;
   font-style:normal;
@@ -80,6 +80,8 @@ p {
 }
 
 .button1:hover {
+  background-color: rgb(53, 81, 141);
+  color: #ffffff;
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
   cursor: pointer;
 }
