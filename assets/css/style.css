@@ -90,3 +90,10 @@ p {
   text-align: center;
   margin: 50;
 }
+
+.MCPT-Game-Jam{
+  text-align: center;
+  display:flex;
+  justify-content: space-between;
+
+}
