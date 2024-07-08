@@ -94,6 +94,11 @@ p {
 .MCPT-Game-Jam{
   text-align: center;
   display:flex;
-  justify-content: space-between;
+  justify-content:space-evenly;
+
+}
+
+.project-buttons-wrapper{
+
 
 }
