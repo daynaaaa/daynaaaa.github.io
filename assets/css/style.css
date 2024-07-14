@@ -59,7 +59,7 @@ h2{
   background-color: #2c4477;
   border: none;
   color: #e0e0e9;
-  font-family: 'milk_mangoregular', Arial, sans-serif;
+  font-family: 'hey_comicregular', Arial, sans-serif;
   font-weight:normal;
   font-style:normal;
   text-align: center;
@@ -84,11 +84,21 @@ h2{
   margin: 50;
 }
 
+.about-text-wrapper{
+  display: inline-block;
+  text-align: left;
+
+}
+
 .MCPT-Game-Jam{
   text-align: center;
   display:flex;
   justify-content:space-evenly;
 
+}
+
+.project-desc-wrapper{
+  text-align: left;
 }
 
 .project-buttons-wrapper{
