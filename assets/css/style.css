@@ -32,11 +32,6 @@ p {
   
 }
 
-.top-buttons-wrapper{
-  display:flex;
-  justify-content: space-between;
-}
-
 .navbar {
   overflow: hidden;
   background-color: rgb(44, 68, 119);; /*dark blue*/
@@ -75,7 +70,7 @@ p {
   font-size: 16px;
   padding: 5px 10px;
   margin:0 auto;
-  width: 80px;
+  width: 90px;
   border-radius: 8px;
 }
 
@@ -101,4 +96,9 @@ p {
 .project-buttons-wrapper{
 
 
+}
+
+.footer-buttons-wrapper{
+  display:flex;
+  justify-content: space-between;
 }
