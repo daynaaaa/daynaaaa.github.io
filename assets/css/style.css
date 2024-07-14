@@ -1,20 +1,17 @@
 body {
-  background-color: #e4d9d5; /*light blurple*/
+  background-color: #e4d9d5;
+  font-family: 'monday_sansregular', Arial, sans-serif;
 }
 
 h1 {
   font-family: 'milk_mangoregular', Arial, sans-serif;
-  font-weight:normal;
-  font-style:normal;
   color: rgb(44, 68, 119);
   text-align: center;
   
 }
 
-p {
+h2{
   font-family: 'hey_comicregular', Arial, sans-serif;
-  font-weight:normal;
-  font-style:normal;
   margin-left: 20px;
 }
 
