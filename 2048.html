@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset= "utf-8" />
+    <title>Danya Cheng</title>
+    <link rel="stylesheet" href="assets/fonts/stylesheet.css">
+    <link rel="stylesheet" href="assets/css/style.css"></head>
+<body>
+    <div class="header-wrapper">
+        <div class="name-wrapper">
+        <h1>Danya Cheng</h1>
+        </div>
+    </div>
+    <div class="navbar">
+        <a href="index.html">daynaaa</a>
+        <a href="about.html">about me</a>
+        <a href="projects.html">projects</a>
+        <div class="search-wrapper">
+            <form id="form" role="search"> 
+                <input type="search" id="query" name="q" 
+                placeholder="google search...">
+                <button>submit</button>
+            </form>
+            <script>
+                const f = document.getElementById('form');
+                const q = document.getElementById('query');
+                const google = 'https://www.google.com/search?';
+                const site = 'daynaaaa.github.io/';
+                function submitted(event) {
+                event.preventDefault();
+                const url = google + 'q=' + q.value;
+                const win = window.open(url, '_blank');
+                win.focus();
+                }
+                f.addEventListener('submit', submitted);
+            </script>
+        </div>
+    </div>
+    <div class="content-wrapper">
+        <header>
+            <h1>2048</h1>
+        </header>
+        <div class="score">
+            score: 
+            0
+        </div>
+        <div class="result">
+
+        </div>
+        <div class="grid">
+            <div class="grid-square">
+                <p id="1"></p> 
+            </div>
+            <div class="grid-square">
+                <p id="2"></p> 
+            </div>
+            <div class="grid-square">
+                <p id="3"></p> 
+            </div>
+            <div class="grid-square">
+                <p id="4"></p> 
+            </div>
+            <div class="grid-square">
+                <p id="5"></p> 
+            </div>
+            <div class="grid-square">
+                <p id="6"></p> 
+            </div>
+            <div class="grid-square">
+                <p id="7"></p> 
+            </div>
+            <div class="grid-square">
+                <p id="8"></p> 
+            </div>
+            <div class="grid-square">
+                <p id="9"></p> 
+            </div>
+        </div>
+    </div>
+    <script src="C:\Users\admin\Documents\cpp\github repositories\daynaaaa.github.io\assets\js\2048_script.js"></script>
+</body>
+</html>
