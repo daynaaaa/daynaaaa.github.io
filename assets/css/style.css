@@ -50,6 +50,32 @@ h2{
   color: #ffffff; /*greyish*/
 }
 
+.navbar .search{
+  float: right;
+}
+
+.navbar input[type=search]{
+  padding: 6px;
+  margin-top: 10px;
+  margin-right: 10px;
+  border: none;
+  font-family: 'monday_sansregular', Arial, sans-serif;
+}
+
+.navbar .search button{
+  background-color: #6980b3;
+  border: none;
+  color: #e0e0e9;
+  font-family: 'hey_comicregular', Arial, sans-serif;
+  text-align: center;
+  float: right;
+  padding: 5px 6px;
+  margin-top: 8px;
+  margin-right: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
 .footer {
   padding: 20px;
   text-align: center;
