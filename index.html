@@ -1,68 +1,65 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Danya Cheng</title>
-    <link rel="stylesheet" href="assets/fonts/stylesheet.css">
-    <link rel="stylesheet" href="assets/css/style.css">
-  </head>
-  <body>
-    <div class="header-wrapper">
-      <div class="name-wrapper">
-        <h1>Danya Cheng</h1>
-      </div>
+<head>
+  <title>Danya Cheng</title>
+  <link rel="stylesheet" href="assets/fonts/stylesheet.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <div class="header-wrapper">
+    <div class="name-wrapper">
+      <h1>Danya Cheng</h1>
     </div>
-    <div class="navbar">
-      <a href="index.html">daynaaa</a>
-      <a href="about.html">about me</a>
-      <a href="projects.html">projects</a>
-      <div class="search">
-        <form id="form" role="search"> 
-          <input type="search" id="query" name="q" 
-          placeholder="search...">
-          <button>submit</button>
-        </form>
-        <script>
-          const f = document.getElementById('form');
-          const q = document.getElementById('query');
-          const google = 'https://www.google.com/search? q=site%3A+';
-          const site = 'daynaaaa.github.io/';
-          function submitted(event) {
-            event.preventDefault();
-            const url = google + site + '+' + q.value;
-            const win = window.open(url, '_blank');
-            win.focus();
-          }
-          f.addEventListener('submit', submitted);
-        </script>
-      </div>
+  </div>
+  <div class="navbar">
+    <a href="index.html">daynaaa</a>
+    <a href="about.html">about me</a>
+    <a href="projects.html">projects</a>
+    <div class="search">
+      <form id="form" role="search"> 
+        <input type="search" id="query" name="q" 
+        placeholder="search...">
+        <button>submit</button>
+      </form>
+      <script>
+        const f = document.getElementById('form');
+        const q = document.getElementById('query');
+        const google = 'https://www.google.com/search? q=site%3A+';
+        const site = 'daynaaaa.github.io/';
+        function submitted(event) {
+          event.preventDefault();
+          const url = google + site + '+' + q.value;
+          const win = window.open(url, '_blank');
+          win.focus();
+        }
+        f.addEventListener('submit', submitted);
+      </script>
     </div>
-    <div class="content-wrapper">
-      <header>
+  </div>
+  <div class="content-wrapper">
+    <header>
+      <br>
+      <h1>Home</h1>
+    </header>
+    <section>
+      <article>
+        <div class="home-text-wrapper">
+          Welcome to my website! <br> <br>
+  
+        </div>
+  
+        <!--<p>a home page... maybe someday there will be something here...</p>-->
+        
         <br>
-        <h1>Home</h1>
-      </header>
-      <section>
-        <article>
-          <div class="home-text-wrapper">
-            Welcome to my website! <br> <br>
-    
-          </div>
-    
-          <!--<p>a home page... maybe someday there will be something here...</p>-->
-          
-          <br>
-          <br>
-        </article>
-      </section>
+        <br>
+      </article>
+    </section>
+  </div>
+  <div class="footer">
+    <b>Relevant Links: <br><br></b>
+    <div class="footer-buttons-wrapper">
+      <button onclick = "window.open('https://github.com/daynaaaa', '_blank'); "class="button button1" >github</button>
+      <button onclick = "window.open('https://daynaaaa.itch.io/', '_blank'); "class="button button1" >itch.io</button>
+      <button onclick = "window.open('https://www.linkedin.com/in/danya-c-6454a7289/', '_blank'); "class="button button1" >linkedin</button>
+      <button onclick = "window.open('mailto:danya.cheng@outlook.com', '_blank'); "class="button button1" >email</button>
     </div>
-    <div class="footer">
-      <b>Relevant Links: <br><br></b>
-      <div class="footer-buttons-wrapper">
-        <button onclick = "window.open('https://github.com/daynaaaa', '_blank'); "class="button button1" >github</button>
-        <button onclick = "window.open('https://daynaaaa.itch.io/', '_blank'); "class="button button1" >itch.io</button>
-        <button onclick = "window.open('https://www.linkedin.com/in/danya-c-6454a7289/', '_blank'); "class="button button1" >linkedin</button>
-        <button onclick = "window.open('mailto:danya.cheng@outlook.com', '_blank'); "class="button button1" >email</button>
-      </div>
-    </div>
-  </body>  
-</html>
+  </div>
+</body>  
