@@ -50,7 +50,7 @@ h2{
   color: #ffffff; /*greyish*/
 }
 
-.navbar .search{
+.navbar .search-wrapper{
   float: right;
 }
 
@@ -62,7 +62,7 @@ h2{
   font-family: 'monday_sansregular', Arial, sans-serif;
 }
 
-.navbar .search button{
+.navbar .search-wrapper button{
   background-color: #6980b3;
   border: none;
   color: #e0e0e9;
