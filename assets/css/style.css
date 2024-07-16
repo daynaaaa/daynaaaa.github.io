@@ -173,10 +173,20 @@ th, td {
   border: 3px solid #e4d9d5;
   padding: 8px;
   font-family: 'hey_comicregular', Arial, sans-serif;
-  color: #e4d9d5;
+
 }
 
 th {
   background-color: #917d75;
   text-align: left;
+  color: #e4d9d5;
+
+}
+
+tr{
+  background-color: #eee3df;
+  color: #917d75;
+  text-align: left;
+  font-family: 'monday_sansregular', Arial, sans-serif;
+
 }

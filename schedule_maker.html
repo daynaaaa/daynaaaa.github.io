@@ -25,12 +25,19 @@
             <h2>User Input</h2>
             name:
             <input type="text" id="name"> <br>
+            start at:
+            <input type="text" id="startAt" placeholder = "(i.e. 8:30)">
+            end at:
+            <input type="text" id="endAt" placeholder = "(i.e. 4:00)"> 
+            intervals:
+            <input type="text" id="intervals" placeholder = "(i.e. 15)"> <br>
+
             course name:
             <input type="text" id="courseName">
             start time:
             <input type="text" id="startTime" placeholder = "(i.e. 8:30)">
             end time:
-            <input type="text" id="endTime" placeholder = "(i.e. 9:30)"> <br>
+            <input type="text" id="endTime" placeholder = "(i.e. 9:30)">
             days:
             <input type="text" id="days" placeholder = "(i.e. MWF or TT)"> <br>
 
@@ -43,6 +50,7 @@
             <table id="timetable">
                 <thead>
                     <tr>
+                        <th>time</th>
                         <th>mon</th>
                         <th>tue</th>
                         <th>wed</th>
@@ -52,23 +60,48 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <tr>
+                        <td>Python</td>
+                    </tr>
+                    <tr>
+                        
+                    </tr>
                 </tbody>
             </table>
         </div>
     </div>
     <script>
         var submitButton = document.getElementById('submit');
+        var n, sa, ea, cn, st, et, d;
+
         var createSchedule = function(){
             var scheduleDiv = document.getElementById(schedule);
-            var n = document.getElementById("name");
-            var cn = document.getElementById("courseName");
-            var st = document.getElementById("startTime");
-            var et = document.getElementById("endTime");
-            var d = document.getElementById("days");
+            n = document.getElementById("name");
+            sa = document.getElementById("startAt");
+            ea = document.getElementById("endAt");
+            i = document.getElementById("intervals");
+
+
+            cn = document.getElementById("courseName");
+            st = document.getElementById("startTime");
+            et = document.getElementById("endTime");
+            d = document.getElementById("days");
 
             schedule.innerHTML = n.value+"\'s schedule:";
+
+            
+            const ds = ["mon", "tue", "wed", "thu", "fri"];
+            const table = document.getElementById("timetable").getElementsByTagName('tbody')[0];
+            const newRow = table.insertRow(0);
+            const cell1 = newRow.insertCell(0);
+            cell1.innerHTML = "NEW CELL1";
+
         };
         submitButton.addEventListener('click',createSchedule);
+
+
+        
+        
     </script>
 </body>
 </html>
