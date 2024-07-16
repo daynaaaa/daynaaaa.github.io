@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset= "utf-8" />
+    <title>schedule maker</title>
+    <link rel="stylesheet" href="assets/fonts/stylesheet.css">
+    <link rel="stylesheet" href="assets/css/style.css"></head>
+</head>
+<body>
+    <div class="header-wrapper">
+        <div class="name-wrapper">
+        <h1>Danya Cheng</h1>
+        </div>
+    </div>
+    <div class="navbar">
+        <a href="index.html">daynaaa</a>
+        <a href="about.html">about me</a>
+        <a href="projects.html">projects</a>
+    </div>
+    <div class="content-wrapper">
+        <header>
+            <h1>schedule maker</h1>
+        </header>
+        <div class="input">
+            <h2>User Input</h2>
+            name:
+            <input type="text" id="name"> <br>
+            course name:
+            <input type="text" id="courseName">
+            start time:
+            <input type="text" id="startTime" placeholder = "(i.e. 8:30)">
+            end time:
+            <input type="text" id="endTime" placeholder = "(i.e. 9:30)"> <br>
+            <button id="submit">submit</button>
+            <!--
+            <form id="name" name="id" onsubmit="submittedName(event)">
+                <div class="input-field">
+                    <input type="text" id="name"
+                    placeholder = "name">
+                    <button type="submit" onclick="this.style.display='none'">submit</button>
+                </div>
+            </form>-->
+        </div>
+        <!--
+        <script>
+            const n = document.getElementById('name');
+            function submittedName(event){
+                event.preventDefault();
+                let nam = document.forms["id"]["name"].value;
+                sessionStorage.setItem("name",nam);
+                document.getElementById("name").innerHTML = nam + "\'s schedule";
+            }
+        </script>-->
+        <div class="schedule">
+            <h2>
+                <span id="schedule"></span>
+            </h2>
+            <script>
+                var submitButton = document.getElementById('submit');
+                var createSchedule = function(){
+                    var scheduleDiv = document.getElementById(schedule);
+                    var n = document.getElementById("name");
+                    var cn = document.getElementById("courseName");
+                    var st = document.getElementById("startTime");
+                    var et = document.getElementById("endTime");
+                    schedule.innerHTML = n.value+"\'s schedule:";
+                };
+                submitButton.addEventListener('click',createSchedule);
+            </script>
+            <!--
+            <span class="name"></span>
+            <h2 id="name">
+                <script>
+                    sessionStorage.getItem()
+                document.getElementById("name").innerHTML = nam + "\'s schedule";
+                </script>
+            </h2>
+            <script type="text/javascript">
+            </script>-->
+        </div>
+    </div>
+    
+</body>
+</html>

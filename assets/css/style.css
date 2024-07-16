@@ -142,3 +142,31 @@ h2{
   display:flex;
   justify-content: space-between;
 }
+
+.input input[type=text]{
+  padding: 6px;
+  margin-top: 10px;
+  margin-right: 10px;
+  border: none;
+  font-family: 'monday_sansregular', Arial, sans-serif;
+}
+
+.input button{
+  background-color: #6980b3;
+  border: none;
+  color: #e0e0e9;
+  font-family: 'hey_comicregular', Arial, sans-serif;
+  text-align: center;
+  padding: 5px 6px;
+  margin-top: 8px;
+  margin-right: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+#display{
+  position: relative;
+  top: 0;
+  width: 300px;
+  height: 30px;
+}
