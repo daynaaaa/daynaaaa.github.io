@@ -68,13 +68,18 @@
         var submitButton = document.getElementById('submit');
         var n, sa, ea, cn, st, et, d;
 
-        var createSchedule = function(){
+        function removeTableBody(){
+            document.getElementById('timetable').getElementsByTagName('tbody')[0].innerHTML = '';
+        }   
+        function createSchedule(event){
+
+            event.preventDefault();
+            removeTableBody();
             var scheduleDiv = document.getElementById(schedule);
             n = document.getElementById("name");
             sa = document.getElementById("startAt").value;
             ea = document.getElementById("endAt").value;
             i = parseInt(document.getElementById("intervals").value);
-
 
             cn = document.getElementById("courseName");
             st = document.getElementById("startTime");
@@ -86,8 +91,6 @@
 
             var startMinutes = convertToMinutes(sa);
             var endMinutes = convertToMinutes(ea);
-            //console.log(startMinutes);
-            //console.log(startMinutes);
 
             for(let a = startMinutes; a <= endMinutes; a += i){
             const table = document.getElementById("timetable").getElementsByTagName('tbody')[0];
@@ -98,7 +101,7 @@
                 cell1.innerHTML = time;
             }
             
-        };
+        }
         submitButton.addEventListener('click',createSchedule);
 
         function convertToMinutes(timeStr) {
