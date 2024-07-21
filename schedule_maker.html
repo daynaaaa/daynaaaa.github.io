@@ -95,17 +95,12 @@
             st = "8:40 am";
             et = "9:30 am";
             d = "MWF";*/
-
-
             schedule.innerHTML = n +"\'s schedule:";
             const table = document.getElementById("timetable").getElementsByTagName('tbody')[0];
-
             var startMinutes = convertToMinutes(sa);
             var endMinutes = convertToMinutes(ea);
-
             for(let a = startMinutes; a <= endMinutes; a += i){
-            const table = document.getElementById("timetable").getElementsByTagName('tbody')[0];
-
+                const table = document.getElementById("timetable").getElementsByTagName('tbody')[0];
                 const newRow = table.insertRow(-1);
                 const cell1 = newRow.insertCell(0);
                 let time = convertToTime(a);
@@ -114,9 +109,6 @@
                     newRow.insertCell(b);
                 }
             }
-            //console.log("hi");
-            //console.log(d.length);
-            //console.log("cn " + cn + " st " + st + " et " + et + " startMinutes " + startMinutes + " endMinutes " + endMinutes + " i " + i);
             var courseStartMinutes = convertToMinutes(st);
             var courseEndMinutes = convertToMinutes(et);
             for(let a = 0; a < d.length; a++){
@@ -125,7 +117,6 @@
             }
         }
         submitButton.addEventListener('click',createSchedule);
-
         function convertToMinutes(timeStr) {
             var ampm = timeStr.slice(-2);
             var timePart = timeStr.slice(0, -3).split(":");
@@ -192,7 +183,6 @@
             //var errorWrapper = document.getElementById("error-wrapper");
             message.innerHTML = "";
             errorWrapper.style.display = "none";
-
             try {
                 if(n.trim() == ""){
                     throw "enter a name"; //trim gets rid of spaces
@@ -219,7 +209,6 @@
                 message.innerHTML =  err;
                 errorWrapper.style.display = "block";
             }
-            
         }
     </script>
 </body>
