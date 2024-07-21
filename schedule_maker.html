@@ -29,19 +29,22 @@
             <input type="text" id="startAt" placeholder = "(i.e. 8:30 am)">
             end at:
             <input type="text" id="endAt" placeholder = "(i.e. 4:00 pm)"> 
-            intervals:
+            interval (mins):
             <input type="text" id="intervals" placeholder = "(i.e. 15)"> <br>
 
             course name:
             <input type="text" id="courseName">
             start time:
-            <input type="text" id="startTime" placeholder = "(i.e. 8:30)">
+            <input type="text" id="startTime" placeholder = "(i.e. 8:30 am)">
             end time:
-            <input type="text" id="endTime" placeholder = "(i.e. 9:30)">
+            <input type="text" id="endTime" placeholder = "(i.e. 9:30 am)">
             days:
             <input type="text" id="days" placeholder = "(i.e. MTWRF)"> <br>
+            <div class="error-wrapper">
+                <p id="p01"></p>
+            </div>
 
-            <button id="submit">submit</button>
+            <button id="submit" onclick = "catchErrors()">submit</button>
         </div>
         <div class="schedule">
             <h2>
@@ -72,29 +75,27 @@
             document.getElementById('timetable').getElementsByTagName('tbody')[0].innerHTML = '';
         }   
         function createSchedule(event){
-
             event.preventDefault();
             removeTableBody();
             var scheduleDiv = document.getElementById(schedule);
-            /*n = document.getElementById("name");
+            n = document.getElementById("name").value;
             sa = document.getElementById("startAt").value;
             ea = document.getElementById("endAt").value;
             i = parseInt(document.getElementById("intervals").value);
-
             cn = document.getElementById("courseName").value;
             st = document.getElementById("startTime").value;
             et = document.getElementById("endTime").value;
             d = document.getElementById("days").value;
-*/
-            n = "dayna";
+            /*n = "dayna";
             sa = "8:30 am";
             ea = "4:00 pm";
             i = 30;
             cn = "math";
             st = "8:40 am";
             et = "9:30 am";
-            d = "MWF";
-            schedule.innerHTML = n.value+"\'s schedule:";
+            d = "MWF";*/
+
+            schedule.innerHTML = n +"\'s schedule:";
             const table = document.getElementById("timetable").getElementsByTagName('tbody')[0];
 
             var startMinutes = convertToMinutes(sa);
@@ -145,21 +146,17 @@
             return ("0" + hours).slice(-2) + ":" + ("0" + mins).slice(-2) + " " + ampm;
         } 
         function setCellToCourse(cn, st, et, d, s, e, i){
-            console.log("cn " + cn + " st " + st + " et " + et + " d " + d + " s " + s + " e " + e + " i " + i);
-
+            //console.log("cn " + cn + " st " + st + " et " + et + " d " + d + " s " + s + " e " + e + " i " + i);
             var startRow = Math.floor((st - s) / i);
-            console.log("startRow =" + startRow);
+            //console.log("startRow =" + startRow);
             var endRow = Math.floor((et - s) / i);
-            console.log("endRow =" + endRow);
-
+            //console.log("endRow =" + endRow);
             var day = getDay(d);
-            console.log("day =" + day);
-
+            //console.log("day =" + day);
             const table = document.getElementById("timetable").getElementsByTagName('tbody')[0];
             for(let a = startRow; a <= endRow; a++){
                 table.rows[a].cells[day].innerHTML = cn;
                 console.log("course logged");
-
             }
         }
         function getDay(d){
@@ -170,6 +167,35 @@
                 case 'R': return 4;
                 case 'F': return 5;
                 default: return -1;
+            }
+        }
+        function catchErrors(){
+            n = document.getElementById("name").value;
+            sa = document.getElementById("startAt").value;
+            ea = document.getElementById("endAt").value;
+            i = parseInt(document.getElementById("intervals").value);
+            cn = document.getElementById("courseName").value;
+            st = document.getElementById("startTime").value;
+            et = document.getElementById("endTime").value;
+            d = document.getElementById("days").value;
+            /*n = "a";
+            sa = "8:30 am";
+            ea = "4:00 pm";
+            i = "a";
+            cn = "math";
+            st = "8:40 am";
+            et = "9:30 am";
+            d = "MWF";*/
+            const message = document.getElementById("p01");
+            message.innerHTML = "";
+            try {
+                if(n.trim() == "") throw "enter a name"; //trim gets rid of spaces
+                if(cn.trim() == "") throw "enter a course name"; //trim gets rid of spaces
+                
+                if(isNaN(i)) throw "wrong format for interval";
+            }
+            catch(err) {
+                message.innerHTML =  err;
             }
         }
     </script>

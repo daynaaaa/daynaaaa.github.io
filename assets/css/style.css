@@ -190,3 +190,15 @@ tr{
   font-family: 'monday_sansregular', Arial, sans-serif;
 
 }
+
+.error-wrapper{
+  margin: auto;
+  margin-top: 10px;
+  font-size: 30;
+  color: firebrick;
+  background-color: rgb(240, 143, 143);
+  width: 30%;
+  border: 3px solid firebrick;
+  border-radius: 8px;
+  padding: 10px;
+}
