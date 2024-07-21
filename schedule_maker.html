@@ -79,22 +79,22 @@
             event.preventDefault();
             removeTableBody();
             var scheduleDiv = document.getElementById(schedule);
-            /*n = document.getElementById("name").value;
+            n = document.getElementById("name").value;
             sa = document.getElementById("startAt").value;
             ea = document.getElementById("endAt").value;
             i = parseInt(document.getElementById("intervals").value);
             cn = document.getElementById("courseName").value;
             st = document.getElementById("startTime").value;
             et = document.getElementById("endTime").value;
-            d = document.getElementById("days").value;*/
-            n = "";
+            d = document.getElementById("days").value;
+            /*n = "";
             sa = "8:30 am";
             ea = "4:00 pm";
             i = 30;
             cn = "math";
             st = "8:40 am";
             et = "9:30 am";
-            d = "MWF";
+            d = "MWF";*/
 
 
             schedule.innerHTML = n +"\'s schedule:";
@@ -172,22 +172,22 @@
             }
         }
         function catchErrors(){
-            /*n = document.getElementById("name").value;
+            n = document.getElementById("name").value;
             sa = document.getElementById("startAt").value;
             ea = document.getElementById("endAt").value;
             i = parseInt(document.getElementById("intervals").value);
             cn = document.getElementById("courseName").value;
             st = document.getElementById("startTime").value;
             et = document.getElementById("endTime").value;
-            d = document.getElementById("days").value;*/
-            n = "";
+            d = document.getElementById("days").value;
+            /*n = "a";
             sa = "8:30 am";
             ea = "4:00 pm";
             i = 30;
             cn = "math";
             st = "8:40 am";
             et = "9:30 am";
-            d = "MWF";
+            d = "MWF";*/
             //var message = document.getElementById("p01");
             //var errorWrapper = document.getElementById("error-wrapper");
             message.innerHTML = "";
@@ -197,12 +197,23 @@
                 if(n.trim() == ""){
                     throw "enter a name"; //trim gets rid of spaces
                 } 
-                if(cn.trim() == ""){
-                    throw "enter a course name"; //trim gets rid of spaces
+                if(!/^\d{1,2}:\d{2} [ap]m$/i.test(sa) 
+                || !/^\d{1,2}:\d{2} [ap]m$/i.test(ea) 
+                || !/^\d{1,2}:\d{2} [ap]m$/i.test(st) 
+                || !/^\d{1,2}:\d{2} [ap]m$/i.test(et)){
+                    throw "wrong time format";
                 }
                 if(isNaN(i)){
                     throw "wrong format for interval";
                 }
+                if(cn.trim() == ""){
+                    throw "enter a course name"; //trim gets rid of spaces
+                }
+                if(!/^[mtwrf]+$/i.test(d)) {
+                    throw "invalid days";
+                }
+                //check if course time doesnt go within the table
+                //check if a day is repeated maybe? doesnt rly matter tho
             }
             catch(err) {
                 message.innerHTML =  err;
