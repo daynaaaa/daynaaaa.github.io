@@ -39,7 +39,7 @@
             end time:
             <input type="text" id="endTime" placeholder = "(i.e. 9:30)">
             days:
-            <input type="text" id="days" placeholder = "(i.e. MWF or TT)"> <br>
+            <input type="text" id="days" placeholder = "(i.e. MTWRF)"> <br>
 
             <button id="submit">submit</button>
         </div>
@@ -76,16 +76,24 @@
             event.preventDefault();
             removeTableBody();
             var scheduleDiv = document.getElementById(schedule);
-            n = document.getElementById("name");
+            /*n = document.getElementById("name");
             sa = document.getElementById("startAt").value;
             ea = document.getElementById("endAt").value;
             i = parseInt(document.getElementById("intervals").value);
 
-            cn = document.getElementById("courseName");
-            st = document.getElementById("startTime");
-            et = document.getElementById("endTime");
-            d = document.getElementById("days");
-
+            cn = document.getElementById("courseName").value;
+            st = document.getElementById("startTime").value;
+            et = document.getElementById("endTime").value;
+            d = document.getElementById("days").value;
+*/
+            n = "dayna";
+            sa = "8:30 am";
+            ea = "4:00 pm";
+            i = 30;
+            cn = "math";
+            st = "8:40 am";
+            et = "9:30 am";
+            d = "MWF";
             schedule.innerHTML = n.value+"\'s schedule:";
             const table = document.getElementById("timetable").getElementsByTagName('tbody')[0];
 
@@ -99,15 +107,24 @@
                 const cell1 = newRow.insertCell(0);
                 let time = convertToTime(a);
                 cell1.innerHTML = time;
+                for(let b = 1; b <= 5; b++){
+                    newRow.insertCell(b);
+                }
             }
-            
+            //console.log("hi");
+            //console.log(d.length);
+            //console.log("cn " + cn + " st " + st + " et " + et + " startMinutes " + startMinutes + " endMinutes " + endMinutes + " i " + i);
+            var courseStartMinutes = convertToMinutes(st);
+            var courseEndMinutes = convertToMinutes(et);
+            for(let a = 0; a < d.length; a++){
+                console.log(d.charAt(a));
+                setCellToCourse(cn, courseStartMinutes, courseEndMinutes, d.charAt(a), startMinutes, endMinutes, i);
+            }
         }
         submitButton.addEventListener('click',createSchedule);
 
         function convertToMinutes(timeStr) {
-            console.log(timeStr);
             var ampm = timeStr.slice(-2);
-            console.log(ampm);
             var timePart = timeStr.slice(0, -3).split(":");
             var hours = parseInt(timePart[0]);
             var minutes = parseInt(timePart[1]);
@@ -127,7 +144,34 @@
             hours = hours ? hours : 12; //midnight
             return ("0" + hours).slice(-2) + ":" + ("0" + mins).slice(-2) + " " + ampm;
         } 
-        
+        function setCellToCourse(cn, st, et, d, s, e, i){
+            console.log("cn " + cn + " st " + st + " et " + et + " d " + d + " s " + s + " e " + e + " i " + i);
+
+            var startRow = Math.floor((st - s) / i);
+            console.log("startRow =" + startRow);
+            var endRow = Math.floor((et - s) / i);
+            console.log("endRow =" + endRow);
+
+            var day = getDay(d);
+            console.log("day =" + day);
+
+            const table = document.getElementById("timetable").getElementsByTagName('tbody')[0];
+            for(let a = startRow; a <= endRow; a++){
+                table.rows[a].cells[day].innerHTML = cn;
+                console.log("course logged");
+
+            }
+        }
+        function getDay(d){
+            switch(d.toUpperCase()){
+                case 'M': return 1;
+                case 'T': return 2;
+                case 'W': return 3;
+                case 'R': return 4;
+                case 'F': return 5;
+                default: return -1;
+            }
+        }
     </script>
 </body>
 </html>
