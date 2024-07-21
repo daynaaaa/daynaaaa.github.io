@@ -40,7 +40,7 @@
             <input type="text" id="endTime" placeholder = "(i.e. 9:30 am)">
             days:
             <input type="text" id="days" placeholder = "(i.e. MTWRF)"> <br>
-            <div class="error-wrapper">
+            <div class="error-wrapper" id="error-wrapper" style="display: none;">
                 <p id="p01"></p>
             </div>
 
@@ -53,12 +53,12 @@
             <table id="timetable">
                 <thead>
                     <tr>
-                        <th>time</th>
-                        <th>mon</th>
-                        <th>tue</th>
-                        <th>wed</th>
-                        <th>thu</th>
-                        <th>fri</th>
+                        <th style = "width: 70px;">time</th>
+                        <th style = "width: 140px;">mon</th>
+                        <th style = "width: 140px;">tue</th>
+                        <th style = "width: 140px;">wed</th>
+                        <th style = "width: 140px;">thu</th>
+                        <th style = "width: 140px;">fri</th>
 
                     </tr>
                 </thead>
@@ -70,7 +70,8 @@
     <script>
         var submitButton = document.getElementById('submit');
         var n, sa, ea, cn, st, et, d;
-
+        var message = document.getElementById("p01");
+        var errorWrapper = document.getElementById("error-wrapper");
         function removeTableBody(){
             document.getElementById('timetable').getElementsByTagName('tbody')[0].innerHTML = '';
         }   
@@ -78,22 +79,23 @@
             event.preventDefault();
             removeTableBody();
             var scheduleDiv = document.getElementById(schedule);
-            n = document.getElementById("name").value;
+            /*n = document.getElementById("name").value;
             sa = document.getElementById("startAt").value;
             ea = document.getElementById("endAt").value;
             i = parseInt(document.getElementById("intervals").value);
             cn = document.getElementById("courseName").value;
             st = document.getElementById("startTime").value;
             et = document.getElementById("endTime").value;
-            d = document.getElementById("days").value;
-            /*n = "dayna";
+            d = document.getElementById("days").value;*/
+            n = "";
             sa = "8:30 am";
             ea = "4:00 pm";
             i = 30;
             cn = "math";
             st = "8:40 am";
             et = "9:30 am";
-            d = "MWF";*/
+            d = "MWF";
+
 
             schedule.innerHTML = n +"\'s schedule:";
             const table = document.getElementById("timetable").getElementsByTagName('tbody')[0];
@@ -170,33 +172,43 @@
             }
         }
         function catchErrors(){
-            n = document.getElementById("name").value;
+            /*n = document.getElementById("name").value;
             sa = document.getElementById("startAt").value;
             ea = document.getElementById("endAt").value;
             i = parseInt(document.getElementById("intervals").value);
             cn = document.getElementById("courseName").value;
             st = document.getElementById("startTime").value;
             et = document.getElementById("endTime").value;
-            d = document.getElementById("days").value;
-            /*n = "a";
+            d = document.getElementById("days").value;*/
+            n = "";
             sa = "8:30 am";
             ea = "4:00 pm";
-            i = "a";
+            i = 30;
             cn = "math";
             st = "8:40 am";
             et = "9:30 am";
-            d = "MWF";*/
-            const message = document.getElementById("p01");
+            d = "MWF";
+            //var message = document.getElementById("p01");
+            //var errorWrapper = document.getElementById("error-wrapper");
             message.innerHTML = "";
+            errorWrapper.style.display = "none";
+
             try {
-                if(n.trim() == "") throw "enter a name"; //trim gets rid of spaces
-                if(cn.trim() == "") throw "enter a course name"; //trim gets rid of spaces
-                
-                if(isNaN(i)) throw "wrong format for interval";
+                if(n.trim() == ""){
+                    throw "enter a name"; //trim gets rid of spaces
+                } 
+                if(cn.trim() == ""){
+                    throw "enter a course name"; //trim gets rid of spaces
+                }
+                if(isNaN(i)){
+                    throw "wrong format for interval";
+                }
             }
             catch(err) {
                 message.innerHTML =  err;
+                errorWrapper.style.display = "block";
             }
+            
         }
     </script>
 </body>

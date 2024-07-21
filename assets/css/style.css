@@ -165,8 +165,9 @@ h2{
 }
 
 table{
-  width: 100%;
+  width: 950px;
   border-collapse: collapse;
+  margin: auto;
 }
 
 th, td {
