@@ -98,7 +98,6 @@ h2{
   border-radius: 8px;
   transition: background-color 0.5s;
   transition: box-shadow 0.5s;
-  
 }
 
 .button1:hover {
@@ -131,11 +130,6 @@ h2{
 
 .project-desc-wrapper{
   text-align: left;
-}
-
-.project-buttons-wrapper{
-
-
 }
 
 .footer-buttons-wrapper{

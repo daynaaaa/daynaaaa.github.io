@@ -59,7 +59,7 @@
                         <th style = "width: 140px;">wed</th>
                         <th style = "width: 140px;">thu</th>
                         <th style = "width: 140px;">fri</th>
-
+                        <th style = "width: 0%; background-color: #e4d9d5"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -69,36 +69,25 @@
     </div>
     <script>
         var submitButton = document.getElementById('submit');
-        var n, sa, ea, cn, st, et, d;
-        var message = document.getElementById("p01");
-        var errorWrapper = document.getElementById("error-wrapper");
-        function removeTableBody(){
-            document.getElementById('timetable').getElementsByTagName('tbody')[0].innerHTML = '';
-        }   
-        function createSchedule(event){
-            event.preventDefault();
-            removeTableBody();
-            var scheduleDiv = document.getElementById(schedule);
-            n = document.getElementById("name").value;
-            sa = document.getElementById("startAt").value;
-            ea = document.getElementById("endAt").value;
-            i = parseInt(document.getElementById("intervals").value);
-            cn = document.getElementById("courseName").value;
-            st = document.getElementById("startTime").value;
-            et = document.getElementById("endTime").value;
-            d = document.getElementById("days").value;
-            /*n = "";
+        var n, sa, ea, cn, st, et, d, startMinutes, endMinutes, courseStartMinutes, courseEndMinutes;
+        window.addEventListener('load',initialize);
+        
+        function initialize(){
+            console.log("init");
+            n = "template";
             sa = "8:30 am";
             ea = "4:00 pm";
             i = 30;
-            cn = "math";
-            st = "8:40 am";
-            et = "9:30 am";
-            d = "MWF";*/
+            cn = "course name";
+            st = "10:30 am";
+            et = "12:00 pm";
+            d = "MWF";
+            createSchedule();
+            /*
             schedule.innerHTML = n +"\'s schedule:";
             const table = document.getElementById("timetable").getElementsByTagName('tbody')[0];
-            var startMinutes = convertToMinutes(sa);
-            var endMinutes = convertToMinutes(ea);
+            startMinutes = convertToMinutes(sa);
+            endMinutes = convertToMinutes(ea);
             for(let a = startMinutes; a <= endMinutes; a += i){
                 const table = document.getElementById("timetable").getElementsByTagName('tbody')[0];
                 const newRow = table.insertRow(-1);
@@ -109,14 +98,56 @@
                     newRow.insertCell(b);
                 }
             }
-            var courseStartMinutes = convertToMinutes(st);
-            var courseEndMinutes = convertToMinutes(et);
+            courseStartMinutes = convertToMinutes(st);
+            courseEndMinutes = convertToMinutes(et);
             for(let a = 0; a < d.length; a++){
                 console.log(d.charAt(a));
                 setCellToCourse(cn, courseStartMinutes, courseEndMinutes, d.charAt(a), startMinutes, endMinutes, i);
             }
+        */
         }
-        submitButton.addEventListener('click',createSchedule);
+
+        var message = document.getElementById("p01");
+        var errorWrapper = document.getElementById("error-wrapper");
+        function removeTableBody(){
+            document.getElementById('timetable').getElementsByTagName('tbody')[0].innerHTML = '';
+        }   
+        function buttonPressed(event){
+            event.preventDefault();
+            n = document.getElementById("name").value;
+            sa = document.getElementById("startAt").value;
+            ea = document.getElementById("endAt").value;
+            i = parseInt(document.getElementById("intervals").value);
+            cn = document.getElementById("courseName").value;
+            st = document.getElementById("startTime").value;
+            et = document.getElementById("endTime").value;
+            d = document.getElementById("days").value;
+            createSchedule();
+        }
+        function createSchedule(){
+            removeTableBody();
+            document.getElementById("schedule").innerHTML = n + "'s schedule:";
+            const table = document.getElementById("timetable").getElementsByTagName('tbody')[0];
+            startMinutes = convertToMinutes(sa);
+            endMinutes = convertToMinutes(ea);
+            for(let a = startMinutes; a <= endMinutes; a += i){
+                const newRow = table.insertRow(-1);
+                const cell = newRow.insertCell(0);
+                cell.innerHTML = convertToTime(a);
+                for(let b = 1; b <= 5; b++){
+                    newRow.insertCell(b);
+                }
+            }
+            courseStartMinutes = convertToMinutes(st);
+            courseEndMinutes = convertToMinutes(et);
+            for(let day = 0; day < d.length; day++){
+                //console.log(d.charAt(day));
+                setCellToCourse(cn, courseStartMinutes, courseEndMinutes, d.charAt(day), startMinutes, endMinutes, i);
+            
+            }
+        }
+        submitButton.addEventListener('click',buttonPressed);
+
         function convertToMinutes(timeStr) {
             var ampm = timeStr.slice(-2);
             var timePart = timeStr.slice(0, -3).split(":");
@@ -139,18 +170,40 @@
             return ("0" + hours).slice(-2) + ":" + ("0" + mins).slice(-2) + " " + ampm;
         } 
         function setCellToCourse(cn, st, et, d, s, e, i){
-            //console.log("cn " + cn + " st " + st + " et " + et + " d " + d + " s " + s + " e " + e + " i " + i);
             var startRow = Math.floor((st - s) / i);
-            //console.log("startRow =" + startRow);
             var endRow = Math.floor((et - s) / i);
-            //console.log("endRow =" + endRow);
             var day = getDay(d);
-            //console.log("day =" + day);
             const table = document.getElementById("timetable").getElementsByTagName('tbody')[0];
-            for(let a = startRow; a <= endRow; a++){
-                table.rows[a].cells[day].innerHTML = cn;
-                console.log("course logged");
+            
+            for (let a = startRow; a <= endRow; a++) {
+                const cell = table.rows[a].cells[day];
+                const row = table.rows[a];
+                if (a === startRow) {
+                    cell.innerHTML = cn + "<br>" + convertToTime(st) + " - " + convertToTime(et);;
+                    cell.style.backgroundColor = "#e4d9d5";
+                    cell.style.color = "#917d75";
+                    cell.style.verticalAlign = "middle";
+                    cell.style.textAlign = "center";
+                    cell.rowSpan = endRow - startRow + 1;
+                    //cell.colSpan = 6;
+                    //console.log(a);
+
+                }
+                else {
+                    /*cell.innerHTML = "";
+                    table.rows[a].colSpan = 6;*/
+                    //table.rows[a].deleteCell(day)
+                    table.rows[a].deleteCell(day)
+                    console.log(day);
+                    //table.rows[a].cells[6].style.backgroundColor = "#e4d9d5"
+                
+                }
+                //table.rows[a].deleteCell(3)
+                //table.rows[a].colSpan = 6;
+
+                //table.rows[a].cells[day]deleteCell(4)
             }
+            //table.deleteCell(4)
         }
         function getDay(d){
             switch(d.toUpperCase()){
@@ -184,30 +237,57 @@
             message.innerHTML = "";
             errorWrapper.style.display = "none";
             try {
-                if(n.trim() == ""){
-                    throw "enter a name"; //trim gets rid of spaces
+                var errors = "PLEASE FIX YOUR INPUT<br>";
+                if(n.trim() == "" 
+                || cn.trim() == "" 
+                || sa.trim() == "" 
+                || ea.trim() == "" 
+                || i == "" 
+                || st.trim() == "" 
+                || et.trim() == "" 
+                || d.trim() == "" ){
+                    errors += "• one or more fields are empty<br>";
+                    //throw "one or more fields are empty"; //trim gets rid of spaces
                 } 
-                if(!/^\d{1,2}:\d{2} [ap]m$/i.test(sa) 
+                else if(!/^\d{1,2}:\d{2} [ap]m$/i.test(sa) 
                 || !/^\d{1,2}:\d{2} [ap]m$/i.test(ea) 
                 || !/^\d{1,2}:\d{2} [ap]m$/i.test(st) 
                 || !/^\d{1,2}:\d{2} [ap]m$/i.test(et)){
-                    throw "wrong time format";
+                    errors += "• wrong time format<br>";
+                    //throw "wrong time format";
+                }
+                if(startMinutes > endMinutes) {
+                    errors += "• start time is later than end time<br>";
+                    //throw "start time is later than end time";
+                }
+                if(courseStartMinutes > courseEndMinutes) {
+                    errors += "• " + n + " course's start time is later than it's end time<br>";
+                    //throw n + " course's start time is later than it's end time";
+                }
+                if(courseStartMinutes < startMinutes) {
+                    errors += "• " + n + " course starts earlier than the provided start time<br>";
+                    //throw n + " course starts earlier than the provided start time";
+                }
+                if(courseEndMinutes > endMinutes) {
+                    errors += "• " + n + " course ends later than the provided end time<br>";
+                    //throw n + " course ends later than the provided end time";
                 }
                 if(isNaN(i)){
-                    throw "wrong format for interval";
-                }
-                if(cn.trim() == ""){
-                    throw "enter a course name"; //trim gets rid of spaces
+                    errors += "• wrong format for interval<br>";
+                    //throw "wrong format for interval";
                 }
                 if(!/^[mtwrf]+$/i.test(d)) {
-                    throw "invalid days";
+                    errors += "• invalid input for days<br>";
+                    //throw "invalid days";
                 }
                 //check if course time doesnt go within the table
                 //check if a day is repeated maybe? doesnt rly matter tho
+                if(errors != "")throw errors;
             }
             catch(err) {
                 message.innerHTML =  err;
                 errorWrapper.style.display = "block";
+
             }
         }
     </script>
