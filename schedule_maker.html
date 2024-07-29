@@ -83,28 +83,6 @@
             et = "12:00 pm";
             d = "MWF";
             createSchedule();
-            /*
-            schedule.innerHTML = n +"\'s schedule:";
-            const table = document.getElementById("timetable").getElementsByTagName('tbody')[0];
-            startMinutes = convertToMinutes(sa);
-            endMinutes = convertToMinutes(ea);
-            for(let a = startMinutes; a <= endMinutes; a += i){
-                const table = document.getElementById("timetable").getElementsByTagName('tbody')[0];
-                const newRow = table.insertRow(-1);
-                const cell1 = newRow.insertCell(0);
-                let time = convertToTime(a);
-                cell1.innerHTML = time;
-                for(let b = 1; b <= 5; b++){
-                    newRow.insertCell(b);
-                }
-            }
-            courseStartMinutes = convertToMinutes(st);
-            courseEndMinutes = convertToMinutes(et);
-            for(let a = 0; a < d.length; a++){
-                console.log(d.charAt(a));
-                setCellToCourse(cn, courseStartMinutes, courseEndMinutes, d.charAt(a), startMinutes, endMinutes, i);
-            }
-        */
         }
 
         var message = document.getElementById("p01");
@@ -141,7 +119,6 @@
             courseStartMinutes = convertToMinutes(st);
             courseEndMinutes = convertToMinutes(et);
             for(let day = 0; day < d.length; day++){
-                //console.log(d.charAt(day));
                 setCellToCourse(cn, courseStartMinutes, courseEndMinutes, d.charAt(day), startMinutes, endMinutes, i);
             
             }
@@ -185,25 +162,13 @@
                     cell.style.verticalAlign = "middle";
                     cell.style.textAlign = "center";
                     cell.rowSpan = endRow - startRow + 1;
-                    //cell.colSpan = 6;
-                    //console.log(a);
-
                 }
                 else {
-                    /*cell.innerHTML = "";
-                    table.rows[a].colSpan = 6;*/
-                    //table.rows[a].deleteCell(day)
                     table.rows[a].deleteCell(day)
                     console.log(day);
-                    //table.rows[a].cells[6].style.backgroundColor = "#e4d9d5"
                 
                 }
-                //table.rows[a].deleteCell(3)
-                //table.rows[a].colSpan = 6;
-
-                //table.rows[a].cells[day]deleteCell(4)
             }
-            //table.deleteCell(4)
         }
         function getDay(d){
             switch(d.toUpperCase()){
@@ -224,16 +189,6 @@
             st = document.getElementById("startTime").value;
             et = document.getElementById("endTime").value;
             d = document.getElementById("days").value;
-            /*n = "a";
-            sa = "8:30 am";
-            ea = "4:00 pm";
-            i = 30;
-            cn = "math";
-            st = "8:40 am";
-            et = "9:30 am";
-            d = "MWF";*/
-            //var message = document.getElementById("p01");
-            //var errorWrapper = document.getElementById("error-wrapper");
             message.innerHTML = "";
             errorWrapper.style.display = "none";
             try {
@@ -246,39 +201,31 @@
                 || st.trim() == "" 
                 || et.trim() == "" 
                 || d.trim() == "" ){
-                    errors += "• one or more fields are empty<br>";
-                    //throw "one or more fields are empty"; //trim gets rid of spaces
+                    errors += "• one or more fields are empty<br>";//trim gets rid of spaces
                 } 
                 else if(!/^\d{1,2}:\d{2} [ap]m$/i.test(sa) 
                 || !/^\d{1,2}:\d{2} [ap]m$/i.test(ea) 
                 || !/^\d{1,2}:\d{2} [ap]m$/i.test(st) 
                 || !/^\d{1,2}:\d{2} [ap]m$/i.test(et)){
                     errors += "• wrong time format<br>";
-                    //throw "wrong time format";
                 }
                 if(startMinutes > endMinutes) {
                     errors += "• start time is later than end time<br>";
-                    //throw "start time is later than end time";
                 }
                 if(courseStartMinutes > courseEndMinutes) {
                     errors += "• " + n + " course's start time is later than it's end time<br>";
-                    //throw n + " course's start time is later than it's end time";
                 }
                 if(courseStartMinutes < startMinutes) {
                     errors += "• " + n + " course starts earlier than the provided start time<br>";
-                    //throw n + " course starts earlier than the provided start time";
                 }
                 if(courseEndMinutes > endMinutes) {
                     errors += "• " + n + " course ends later than the provided end time<br>";
-                    //throw n + " course ends later than the provided end time";
                 }
                 if(isNaN(i)){
                     errors += "• wrong format for interval<br>";
-                    //throw "wrong format for interval";
                 }
                 if(!/^[mtwrf]+$/i.test(d)) {
                     errors += "• invalid input for days<br>";
-                    //throw "invalid days";
                 }
                 //check if course time doesnt go within the table
                 //check if a day is repeated maybe? doesnt rly matter tho
